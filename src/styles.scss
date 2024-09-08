@@ -1,1 +1,26 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+  --accent-c: #6d43ad;
+  --hover-c:  #6d43adb3;
+  --bg-c: #cabede;
+  --border-c: #a697b4;
+  --gray-c: #6c6972;
+  --black-c: #121212;
+}
+
+
+html, body {
+  max-height: 100%;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Ubuntu", sans-serif;
+  color: var(--black-c);
+}
+
+h1, h2, h3, ul, p {
+  padding: 0;
+  margin: 0;
+  font-weight: normal;
+}
