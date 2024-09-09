@@ -1,15 +1,16 @@
+import { Currencies } from "../enums/currencies";
+
 export interface CurrencyExchangeResponce {
-  success: boolean;
   date: string;
-  historical: string;
   info: {
     rate: number;
     timestamp: number;
   };
   query: {
+    from: Currencies;
+    to: Currencies;
     amount: number;
-    from: string;
-    to: string;
   };
   result: number;
+  success: boolean;
 }

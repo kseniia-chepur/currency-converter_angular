@@ -1,0 +1,31 @@
+<main class="main">
+  <form class="form">
+    <div class="form-block">
+      <mat-form-field>
+        <mat-label>Select currency</mat-label>
+        <mat-select [(ngModel)]="fromCurrency" (ngModelChange)="convertCurrency()" name="fromCurrency">
+          <mat-option *ngFor="let currency of currencies" [value]="currency">{{currency}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Enter amount</mat-label>
+        <input type="number" min="0" matInput [(ngModel)]="fromAmount" (ngModelChange)="convertCurrency()" name="fromAmount" />
+      </mat-form-field>
+    </div>
+
+    <div class="form-block">
+      <mat-form-field>
+        <mat-label>Select currency</mat-label>
+        <mat-select [(ngModel)]="toCurrency" (ngModelChange)="convertCurrency()" name="toCurrency">
+          <mat-option *ngFor="let currency of currencies" [value]="currency">{{currency}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+         <mat-form-field>
+        <mat-label>Converted amount</mat-label>
+        <input type="number" min="0" matInput [(ngModel)]="toAmount" (ngModelChange)="convertCurrencyReverseDirection()" name="toAmount" />
+      </mat-form-field>
+    </div>
+  </form>
+</main>

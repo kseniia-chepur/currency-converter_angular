@@ -1,0 +1,49 @@
+.main {
+  padding-top: 50px;
+  display: flex;
+  justify-content: center;
+}
+
+.form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+  padding-block: 50px 30px;
+  width: 50%;
+  background-color: var(--bg-c);
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+  border-radius: 20px;
+}
+
+.form-block {
+  display: flex;
+  flex-direction: column;
+  width: 25%;
+}
+
+mat-label {
+  font-size: 0.9rem;
+}
+
+@media(max-width: 1024px) {
+  .form {
+    width: 75%;
+  }
+}
+
+@media(max-width: 768px) {
+  .form {
+    width: 90%;
+  }
+}
+
+@media(max-width: 568px) {
+  .form {
+    gap: 25px;
+  }
+
+  .form-block {
+    width: 35%;
+  }
+}

@@ -16,7 +16,7 @@ export class CurrencyConverterService {
   getCurrencyRates(): Observable<Rates> {
     return this.http
       .get<CurrentRatesResponce>(
-        `${environment.base_url}/latest?apikey=${environment.api_key}&base=UAH&symbols=USD,EUR`
+        `${environment.apiUrl}/latest?apikey=${environment.apiKey}&base=UAH&symbols=USD,EUR`
       )
       .pipe(map((response) => response.rates));
   }
@@ -28,7 +28,7 @@ export class CurrencyConverterService {
   ): Observable<number> {
     return this.http
       .get<CurrencyExchangeResponce>(
-        `${environment.base_url}/convert?apikey=${environment.api_key}&to=${convertTo}&from=${convertFrom}&amount=${amount}`
+        `${environment.apiUrl}/convert?apikey=${environment.apiKey}&to=${convertTo}&from=${convertFrom}&amount=${amount}`
       )
       .pipe(map((response) => response.result));
   }
