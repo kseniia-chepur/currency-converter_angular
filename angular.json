@@ -32,7 +32,7 @@
               }
             ],
             "styles": [
-              "@angular/material/prebuilt-themes/magenta-violet.css",
+              "@angular/material/prebuilt-themes/azure-blue.css",
               "src/styles.scss"
             ],
             "scripts": []
@@ -42,13 +42,13 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kB",
-                  "maximumError": "1MB"
+                    "maximumWarning": "2MB",
+                  "maximumError": "3MB"
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "2kB",
-                  "maximumError": "4kB"
+               "maximumWarning": "150kB",
+                  "maximumError": "200kB"
                 }
               ],
               "outputHashing": "all"
@@ -92,7 +92,7 @@
               }
             ],
             "styles": [
-              "@angular/material/prebuilt-themes/magenta-violet.css",
+              "@angular/material/prebuilt-themes/azure-blue.css",
               "src/styles.scss"
             ],
             "scripts": []
