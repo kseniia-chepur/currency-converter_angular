@@ -41,7 +41,7 @@ export class CurrencyConverterComponent {
     } else {
       this.currencyConverterService.convertCurrency(this.toCurrency, this.fromCurrency, this.toAmount).subscribe({
           next: (result) => {
-            this.toAmount = Math.round(result * 10000) / 10000;
+            this.fromAmount = Math.round(result * 10000) / 10000;
           },
           error: (error) => console.error(error.status, error.error.message),
         });
