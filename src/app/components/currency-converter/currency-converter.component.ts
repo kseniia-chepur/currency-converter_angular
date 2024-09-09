@@ -36,13 +36,12 @@ export class CurrencyConverterComponent {
   }
 
   convertCurrencyReverseDirection() {
-    console.log('hi')
     if (this.fromCurrency === this.toCurrency) {
       this.fromAmount = this.toAmount;
     } else {
       this.currencyConverterService.convertCurrency(this.toCurrency, this.fromCurrency, this.toAmount).subscribe({
           next: (result) => {
-            this.fromAmount = result;
+            this.toAmount = Math.round(result * 10000) / 10000;
           },
           error: (error) => console.error(error.status, error.error.message),
         });
