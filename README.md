@@ -11,8 +11,10 @@
 
 - Install dependencies: `npm install`
 
+- To enable the app logic define environment variables `NG_APP_API_KEY` and `NG_APP_API_URL` in .env file
+
 - Run project: `ng serve`
 
 - Navigate to `http://localhost:4200/`
 
-- To enable the app logic, replace 'YOUR_API_KEY' in `src/environments/environment.ts` with the actual API key
+
