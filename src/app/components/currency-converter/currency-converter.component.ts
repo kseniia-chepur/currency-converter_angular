@@ -1,18 +1,25 @@
-import { Component, inject } from '@angular/core';
-import {MatInputModule} from '@angular/material/input';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import { FormsModule} from '@angular/forms';
-import {MatSelectModule} from '@angular/material/select';
+import { Component, DestroyRef, inject } from '@angular/core';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { FormsModule } from '@angular/forms';
+import { MatSelectModule } from '@angular/material/select';
 import { CommonModule } from '@angular/common';
 import { Currencies } from '../../enums/currencies';
 import { CurrencyConverterService } from '../../services/currency-converter.service';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-currency-converter',
   standalone: true,
-  imports: [CommonModule, FormsModule, MatFormFieldModule, MatInputModule, MatSelectModule],
+  imports: [
+    CommonModule,
+    FormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule,
+  ],
   templateUrl: './currency-converter.component.html',
-  styleUrl: './currency-converter.component.scss'
+  styleUrl: './currency-converter.component.scss',
 })
 export class CurrencyConverterComponent {
   private currencyConverterService = inject(CurrencyConverterService);
@@ -22,11 +29,16 @@ export class CurrencyConverterComponent {
   fromAmount: number = 0;
   toAmount: number = 0;
 
+  private destroyRef = inject(DestroyRef);
+
   convertCurrency() {
     if (this.fromCurrency === this.toCurrency) {
       this.toAmount = this.fromAmount;
     } else {
-      this.currencyConverterService.convertCurrency(this.fromCurrency, this.toCurrency, this.fromAmount).subscribe({
+      this.currencyConverterService
+        .convertCurrency(this.fromCurrency, this.toCurrency, this.fromAmount)
+        .pipe(takeUntilDestroyed(this.destroyRef))
+        .subscribe({
           next: (result) => {
             this.toAmount = Math.round(result * 10000) / 10000;
           },
@@ -39,7 +51,9 @@ export class CurrencyConverterComponent {
     if (this.fromCurrency === this.toCurrency) {
       this.fromAmount = this.toAmount;
     } else {
-      this.currencyConverterService.convertCurrency(this.toCurrency, this.fromCurrency, this.toAmount).subscribe({
+      this.currencyConverterService
+        .convertCurrency(this.toCurrency, this.fromCurrency, this.toAmount)
+        .subscribe({
           next: (result) => {
             this.fromAmount = Math.round(result * 10000) / 10000;
           },
